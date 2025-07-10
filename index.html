@@ -5,94 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meine Projekte</title>
      <style>
-    *{
-            box-sizing: border-box;
-        }
-    body {
-    font-family: Arial, Helvetica, sans-serif;
+        * {
+    box-sizing: border-box;
     margin: 0;
-    background: #f9f9f9;
-    color: #333;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.container {
     display: flex;
-}
-
-    .kontaktformular {
-    width: 300px;
     height: 100vh;
-    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 320px;
+    background-color: #111;
+    color: white;
     padding: 20px;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
     overflow-y: auto;
-    position: sticky;
-    top: 0;
-    z-index: 1;
 }
 
-    .main-content {
-    flex: 1;
+.sidebar header {
+    margin-bottom: 20px;
+}
+
+.sidebar h1 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.kontaktformular {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.kontaktformular h2 {
+    margin-bottom: 15px;
+}
+
+.kontaktformular input,
+.kontaktformular textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+}
+
+.kontaktformular button {
+    background-color: white;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.kontaktformular button:hover {
+    background-color: #ccc;
+}
+
+.main-content {
+    margin-left: 320px; /* matches sidebar width */
+    background-color: #f4f4f4;
     padding: 40px;
+    height: 100vh;
+    overflow-y: auto;
+    width: calc(100% - 320px);
 }
 
-    .projects-grid {
+.project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
-    .project {
-    background: #ffffff;
+.project {
+    background: white;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+    text-decoration: none;
+    color: inherit;
 }
 
-    .project:hover {
+.project:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-    .project iframe, .project img {
-    width: 100%;
-    height: 180px;
-    border: none;
-    object-fit: cover;
-}
-
-    .project-content {
+.project-content {
     padding: 15px;
 }
 
-    .project-title {
-    font-size: 1.1em;
+.project-title {
+    font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-    .project-tools {
+.project-tools {
     font-size: 0.9em;
     color: #666;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    body {
-        flex-direction: column;
-    }
-
-    .kontaktformular {
-        width: 100%;
-        height: auto;
-        position: relative;
-        box-shadow: none;
+/* Responsive */
+@media (max-width: 1000px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
+
+@media (max-width: 600px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
     </style>
 
 </head>
 <body>
+    <div class="container">
+    <div class="sidebar">
      <header>
         <h1>Meine Projekte</h1>
     </header>
@@ -109,8 +166,10 @@
             <button type="submit">Senden</button>
 
         </form>
+        </div> 
         </div>
     </div>
+    <div class="main-content">
      <!--Projekt-Grid-->
     <section class="project-grid">
         <!--projekt 1-->
@@ -124,6 +183,7 @@
          <a class="project" href="https://my-little-todolist-app.netlify.app/" target="_blank">
             <div class="project-content">
                 <div class="project-title">TodoList</div>
+                <iframe src="https://my-little-todolist-app.netlify.app/" loading="lazy"></iframe>
                 <div class="project-tools">HTML, Js, CSS</div>
         </div>
         </a>
@@ -199,8 +259,10 @@
         </a>
         <!--weitere projekte hier-->
     </section>
+    </div>
+    </div>
 
-<script>
+    <script>
         function toggleForm(){
             const formContent = document.getElementById('formContent');
             formContent.classList.toggle('visible');
