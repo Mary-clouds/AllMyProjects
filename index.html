@@ -116,8 +116,13 @@ body, html {
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 5px;
+    transition: color 0.3s ease;
+    cursor: pointer;
 }
-
+.project-title:hover {
+  color: #f0c; 
+  text-decoration: underline;
+}
 .project-tools {
     font-size: 0.9em;
     color: #666;
@@ -168,11 +173,12 @@ body, html {
         <!--<button class="toggle-button" onclick="toggleForm()">Kontakt</button>-->
         <div class="form-content" id="formContent">
         <h2>Kontakt</h2><br>
-        <form action="https://formsubmit.co/info@nevermanncodes.com" method="POST">
+        <form id="kontaktForm" action="https://formsubmit.co/info@nevermanncodes.com" method="POST" onsubmit="return zeigeAlert()>
+            <input type="hidden" name="_captcha" value="false">
             <label for="email">E-Mail: </label><br>
-            <input type="email" id="email" name="email" required><br>
+            <input type="email" id="email" name="email" placeholder="Deine Email here" required><br>
             <label for="nachricht">Nachricht: </label><br>
-            <textarea id="nachricht" name="nachricht" required></textarea><br><br>
+            <textarea id="nachricht" name="nachricht" placeholder="Deine Nachricht here" required></textarea><br><br>
             <button type="submit">Senden</button>
 
         </form>
@@ -279,12 +285,18 @@ body, html {
     </section>
     </div>
     </div>
-   
     <script>
+        function zeigeAlert(){
+    alert("Nachricht wurde gesendet🎉. Ich melde mich demnächst. Danke!");
+    return true; // Weiter mit dem Absenden
+        }
         function toggleForm(){
             const formContent = document.getElementById('formContent');
             formContent.classList.toggle('visible');
         }
+        const form = document.getElementById('kontaktForm');
+
+   
        </script>
 
 </body>
