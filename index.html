@@ -121,7 +121,7 @@ body, html {
 }
 .project-title:hover {
   color: #f0c; 
-  text-decoration: underline;
+  
 }
 .project-tools {
     font-size: 0.9em;
@@ -173,7 +173,7 @@ body, html {
         <!--<button class="toggle-button" onclick="toggleForm()">Kontakt</button>-->
         <div class="form-content" id="formContent">
         <h2>Kontakt</h2><br>
-        <form id="kontaktForm" action="https://formsubmit.co/info@nevermanncodes.com" method="POST" onsubmit="return zeigeAlert()>
+        <form id="kontaktForm" action="https://formsubmit.co/info@nevermanncodes.com" method="POST" onsubmit="return zeigeAlert(event)">
             <input type="hidden" name="_captcha" value="false">
             <label for="email">E-Mail: </label><br>
             <input type="email" id="email" name="email" placeholder="Deine Email here" required><br>
@@ -216,9 +216,10 @@ body, html {
         </div>
         </a>
         <!--projekt 4-->
-         <a class="project" href="#" target="_blank">
+         <a class="project" href="https://calculateyour-bmi.netlify.app/" target="_blank">
             <div class="project-content">
                 <div class="project-title">BMI-Calculator</div>
+                <iframe src="https://calculateyour-bmi.netlify.app/" loading="lazy"></iframe>
                 <div class="project-tools">CSS, Js</div>
         </div>
         </a>
@@ -231,9 +232,10 @@ body, html {
         </div>
         </a>
          <!--projekt 6-->
-         <a class="project" href="#" target="_blank">
+         <a class="project" href="https://colab.research.google.com/drive/1seOpFdJyBcL_VVhigLZqbKUX-N4taqty#scrollTo=uLzEp0fsegPr&uniqifier=1" target="_blank">
             <div class="project-content">
                 <div class="project-title">Reiseplaner app</div>
+                <iframe src="https://colab.research.google.com/drive/1seOpFdJyBcL_VVhigLZqbKUX-N4taqty#scrollTo=uLzEp0fsegPr&uniqifier=1" loading="lazy"></iframe>
                 <div class="project-tools">Python, AI</div>
         </div>
         </a>
@@ -286,9 +288,14 @@ body, html {
     </div>
     </div>
     <script>
-        function zeigeAlert(){
-    alert("Nachricht wurde gesendet🎉. Ich melde mich demnächst. Danke!");
-    return true; // Weiter mit dem Absenden
+       function showAlertBeforeSubmit(e) {
+            e.preventDefault();
+            alert("Nachricht wurde gesendet 🎉. Ich melde mich demnächst. Danke!");
+
+             setTimeout(() => {
+            e.target.submit();
+             }, 100);
+            return false;
         }
         function toggleForm(){
             const formContent = document.getElementById('formContent');
