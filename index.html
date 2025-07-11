@@ -168,11 +168,11 @@ body, html {
         <!--<button class="toggle-button" onclick="toggleForm()">Kontakt</button>-->
         <div class="form-content" id="formContent">
         <h2>Kontakt</h2><br>
-        <form>
+        <form action="https://formsubmit.co/info@nevermanncodes.com" method="POST">
             <label for="email">E-Mail: </label><br>
-            <input type="email" id="email" name="email"><br>
+            <input type="email" id="email" name="email" required><br>
             <label for="nachricht">Nachricht: </label><br>
-            <textarea id="nachricht" name="nachricht"></textarea><br><br>
+            <textarea id="nachricht" name="nachricht" required></textarea><br><br>
             <button type="submit">Senden</button>
 
         </form>
