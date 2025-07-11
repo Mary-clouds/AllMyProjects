@@ -122,7 +122,14 @@ body, html {
     font-size: 0.9em;
     color: #666;
 }
-
+/* Footer ganz nach unten schieben */
+.sidebar-footer {
+  margin-top: auto; 
+  padding-top: 20px;
+  font-size: 0.6em;
+  color: #aaa;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
 /* Responsive */
 @media (max-width: 1000px) {
     .projects-grid {
@@ -158,19 +165,22 @@ body, html {
     </header>
     <!--kontakformular-->
     <div class="kontakformular">
-        <button class="toggle-button" onclick="toggleForm()">Kontakt</button>
+        <!--<button class="toggle-button" onclick="toggleForm()">Kontakt</button>-->
         <div class="form-content" id="formContent">
-        <h2>Kontakt</h2>
+        <h2>Kontakt</h2><br>
         <form>
             <label for="email">E-Mail: </label><br>
             <input type="email" id="email" name="email"><br>
             <label for="nachricht">Nachricht: </label><br>
-            <textarea id="nachricht" name="nachricht"></textarea><br>
+            <textarea id="nachricht" name="nachricht"></textarea><br><br>
             <button type="submit">Senden</button>
 
         </form>
         </div> 
         </div>
+        <footer class="sidebar-footer">
+        <p>© 2025 Meine Projekte</p><br><p>coded by <a href="https://github.com/Mary-clouds" target="_blank">Nevermann</a></p>
+    </footer>
     </div>
     <div class="main-content">
      <!--Projekt-Grid-->
@@ -269,9 +279,7 @@ body, html {
     </section>
     </div>
     </div>
-    <footer>
-        <p>This Website was coded by <a href="https://github.com/Mary-clouds" target="_blank">Nevermann</a></p>
-    </footer>
+   
     <script>
         function toggleForm(){
             const formContent = document.getElementById('formContent');
